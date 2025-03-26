@@ -6,116 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NateGolf</title>
-  <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=block" rel="stylesheet" />
   <link rel="manifest" href="./manifest.webmanifest" />
+  <link href="./style.css" rel="stylesheet" type="text/css"/>
   <script src="./matter.js"></script>
   <script src="./rough.js"></script>
   <script src="./decomp.js"></script>
   <script src="./seedrandom.min.js">
   </script>
-
-  <style>
-    /* fonts */
-    @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
-    @import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
-
-    @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Handlee&display=swap");
-
-    h1,
-    .playbutton {
-      font-family: "Indie Flower", cursive;
-    }
-
-    .playbutton {
-      font-weight: 600;
-    }
-
-    body {
-      font-family: "Handlee";
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body,
-    html {
-      /* overflow: hidden; */
-      height: 100%;
-      /* margin: 5px; */
-      margin-bottom: 100px;
-    }
-
-    .canvas-container {
-      position: relative;
-      display: block;
-      margin: 2vh auto;
-      margin-top: calc(50vh - 45vmin);
-      max-width: min(100%, 90vmin, 800px);
-      max-height: min(100%, 90vmin, 800px);
-      width: auto;
-      height: auto;
-    }
-
-    #canvas-overlay {
-      /* display: none; */
-      position: absolute;
-
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
-
-    #tutorial {
-      display: none;
-      text-align: center;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 1);
-      padding: 5%;
-      border: 1px solid #cccccc;
-      line-height: 2.5vmin;
-    }
-
-    #back {
-      cursor: pointer;
-    }
-
-    #back:hover {
-      opacity: 0.8
-    }
-
-    #splash {
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 5%;
-
-    }
-
-    .vid {
-      width: 70%;
-      height: auto;
-      border: 1px dashed blue
-    }
-
-    .menubutton:hover {
-      cursor: pointer;
-      fill: green;
-    }
-
-    canvas {
-      /* display: block;
-    margin: 2vh auto;
-    max-width: min(100%, 90vw, 800px);
-    max-height: min(100%, 90vmin); */
-      width: 100%;
-      height: auto;
-      border: 1px solid black;
-    }
-  </style>
-
 </head>
 
 <body>
