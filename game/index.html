@@ -126,7 +126,6 @@
   // ui logic
   document.getElementById('playbtn').onclick = () => {
     playing = true;
-    logStats("game_start");
     overlay.style.display = "none";
   }
 
@@ -165,8 +164,6 @@
   lastSeed.setTime(seed.getTime() - (24 * 60 * 60 * 1000));
 
   let rng = new Math.seedrandom(dateString);
-
-  logStats("view");
 
   document.getElementById('date').textContent = seed.toLocaleDateString("en");
 
@@ -1121,17 +1118,15 @@
   })
 
   async function handleEnd(reason) {
-    logStats("hole_complete")
+    name = window.webxdc.selfName;
 
     // if not finished
     if (reason === "death") {
-      alert("💀 You died too many times 💀 - score of 12")
+      sendUpdate(`💀 ${name} died too many times 💀`)
       strokes = 12;
     } else {
       if (strokes === 1) {
-        alert("⛳ You scored a hole in one!! ⛳")
-      } else {
-        alert(`You finished the hole in ${strokes} strokes!`);
+        sendUpdate(`⛳ ${name} scored a hole in one!! ⛳`)
       }
     }
 
@@ -1167,7 +1162,6 @@
       redrawBg();
       playing = true;
     } else {
-      logStats("game_complete")
       document.body.appendChild(document.createElement('br'))
 
       let finalScoreDiv = document.createElement('div')
@@ -1178,7 +1172,8 @@
       ctx.putImageData(s_ctx.getImageData(0, 0, s_canvas.width, s_canvas.height), 0, 0)
       currentHole += 2
 
-      alert(`you finished the entire course in ${totalStrokes} strokes, congrats!`);
+      name = window.webxdc.selfName;
+      sendUpdate(`${name} finished the entire course in ${totalStrokes} strokes, congrats!`);
     }
 
   }
@@ -1295,20 +1290,8 @@
     };
   }
 
-  function logStats(type = "view") {
-    let code = urlParams.get('date');
-    if (code && code.length > 0) {
-      return;
-    }
-
-    // const d = new Date().toISOString().split("T")[0]
-
-    fetch("https://app.squigglegolf.com/stats/" + type, {
-      method: "POST", headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ date: dateString })
-    }).then(res => res.json()).then(data => console.log(data))
+  function sendUpdate(message) {
+    window.webxdc.sendUpdate({ payload: null, info: message}, '')
   }
 
 </script>
